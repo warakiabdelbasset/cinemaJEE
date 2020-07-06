@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header">Liste des Cinemas</div>
+			<div class="card-body">
+				<form method="get" th:action="@{cinemasgest}">
+					<div class="form-group">
+						<label>Name</label> <input type="text" name="keyword" th:value="${keyword}">
+						<input type="hidden" name="ville" th:value="${ville}">
+						<button class="btn btn-primary">Search</button>
+					</div>
+				</form>
+				<table class="table">
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Nombre salles</th>
+						<th>Ville</th>
+					</tr>
+					<tr th:each="c:${cinemas}">
+						<td th:text="${c.id}"></td>
+						<td th:text="${c.name}"></td>
+						<td th:text="${c.nombreSalles}"></td>
+						<td th:text="${c.ville.name}"></td>
+					</tr>
+				</table>
+
+				<ul class="nav nav-pills">
+					<li th:each="page, status:${pages}"><a
+						th:class="${currentPage==status.index ? 'btn btn-primary' : 'btn'}"
+						th:href="@{cinemasgest(page=${status.index}, ville=${ville}, keyword=${keyword} )}"
+						th:text="${status.index}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>

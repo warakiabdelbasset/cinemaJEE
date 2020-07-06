@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Liste des films</h3>
+
+	<table>
+		<tr>
+			<th>ID</th><th>titre</th><th>Realisateur</th><th>Duree</th><th>Date sortie</th><th>Categorie</th>
+		</tr>
+		<tr th:each="f:${films}">
+			<td th:text="${f.id}"></td>
+			<td th:text="${f.titre}"></td>
+			<td th:text="${f.realisateur}"></td>
+			<td th:text="${f.duree}"></td>
+			<td th:text="${#dates.format(f.dateSortie, 'dd-MM-yyyy')}"></td>
+			<td th:text="${f.categorie.name}"></td>
+		</tr>
+	</table>
+</body>
+</html>

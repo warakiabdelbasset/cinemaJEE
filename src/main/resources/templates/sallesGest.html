@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Liste des salles</h3>
+
+	<table>
+		<tr>
+			<th>ID</th><th>Name</th><th>Nombre Places</th><th>Cinema</th><th>Ville</th>
+		</tr>
+		<tr th:each="s:${salles}">
+			<td th:text="${s.id}"></td>
+			<td th:text="${s.name}"></td>
+			<td th:text="${s.nombrePlace}"></td>
+			<td th:text="${s.cinema.name}"></td>
+			<td th:text="${s.cinema.ville.name}"></td>
+		</tr>
+	</table>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Liste des seances</h3>
+
+	<table>
+		<tr>
+			<th>ID</th><th>Heure debut</th>
+		</tr>
+		<tr th:each="s:${seances}">
+			<td th:text="${s.id}"></td>
+			<td th:text="${s.heureDebut}"></td>
+		</tr>
+	</table>
+</body>
+</html>

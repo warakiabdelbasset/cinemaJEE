@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template1">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div layout:fragment="pageContent">
+
+<h1>Add ville</h1>
+
+<div class="container">
+<form th:action="@{saveville}" method="post">
+<div class="form-group">
+<label class="control-label">Id: </label>
+<label class="control-label" th:text=${ville.id}></label>
+<input type="hidden" name="id" class="form-control" th:value="${ville.id}">
+<span></span>
+</div>
+<div class="form-group">
+<label class="control-label">Name: </label>
+<input type="text" name="name" class="form-control" th:value="${ville.name}">
+<span></span>
+</div>
+<button class="btn btn-success" type=submit> save</button>
+</form>
+</div>
+</div>
+</body>
+</html>

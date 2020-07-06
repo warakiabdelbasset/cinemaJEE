@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="template1" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css"
+	href="/webjars/bootstrap/4.1.3/css/bootstrap.min.css">
+</head>
+<body>
+	<div layout:fragment="pageContent">
+	<div class="container mt-5">
+		<div class="card">
+			<div class="card-header">Liste des Villes</div>
+			<div class="card-body">
+				<form method="get" th:action="@{villesgest}">
+					<div class="form-group">
+						<label>Name</label> <input type="text" name="keyword"
+							th:value="${keyword}">
+						<button class="btn btn-primary">Search</button>
+					</div>
+				</form>
+				<table class="table">
+					<tr>
+						<th>ID</th>
+						<th>Name</th>
+						<th>Cinemas</th>
+					</tr>
+					<tr th:each="v:${villes}">
+						<td th:text="${v.id}"></td>
+						<td th:text="${v.name}"></td>
+						<td><a class="btn btn-success" th:href="@{cinemasgest(ville=${v.id})}">Show more</a></td>
+						<td sec:authorize="hasRole('ADMIN')">
+						<a class="btn btn-warning" th:href="@{editville(id=${v.id})}">edit</a>
+						</td>
+					</tr>
+				</table>
+
+				<ul class="nav nav-pills">
+					<li th:each="page, status:${pages}"><a
+						th:class="${currentPage==status.index ? 'btn btn-primary' : 'btn'}"
+						th:href="@{villesgest(page=${status.index}, keyword=${keyword})}"
+						th:text="${status.index}"></a></li>
+				</ul>
+			</div>
+		</div>
+	</div></div>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>List des tickets</h3>
+
+	<table>
+		<tr>
+			<th>ID</th><th>Prix</th><th>Reserve</th><th>Client</th><th>Place ID</th><th>Projection ID</th>
+		</tr>
+		<tr th:each="t:${tickets}">
+			<td th:text="${t.id}"></td>
+			<td th:text="${t.prix}"></td>
+			<td th:text="${t.reserve}"></td>
+			<td th:text="${t.nomClient}"></td>
+			<td th:text="${t.place.id}"></td>
+			<td th:text="${t.projection.id}"></td>
+		</tr>
+	</table>
+</body>
+</html>

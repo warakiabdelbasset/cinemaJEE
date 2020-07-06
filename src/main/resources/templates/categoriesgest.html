@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Liste des categories</h3>
+
+	<table>
+		<tr>
+			<th>ID</th><th>Name</th>
+		</tr>
+		<tr th:each="c:${categories}">
+			<td th:text="${c.id}"></td>
+			<td th:text="${c.name}"></td>
+		</tr>
+	</table>
+</body>
+</html>

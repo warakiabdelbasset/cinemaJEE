@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="windows-1256">
+<title>Insert title here</title>
+</head>
+<body>
+	<h3>Liste des projections</h3>
+
+	<table>
+		<tr>
+			<th>ID</th><th>Film</th><th>Date de projection</th><th>Prix</th><th>Seance</th><th>Salle ID</th>
+		</tr>
+		<tr th:each="pr:${projections}">
+			<td th:text="${pr.id}"></td>
+			<td th:text="${pr.film.titre}"></td>
+			<td th:text="${#dates.format(pr.dateProjection, 'dd-MM-yyyy')}"></td>
+			<td th:text="${pr.prix}"></td>
+			<td th:text="${pr.seance.heureDebut}"></td>
+			<td th:text="${pr.salle.id}"></td>
+		</tr>
+	</table>
+</body>
+</html>
